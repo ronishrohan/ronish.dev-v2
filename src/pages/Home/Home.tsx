@@ -35,7 +35,7 @@ const Home = () => {
     <section className="size-full font-montreal flex flex-col items-center justify-center p-4">
       <div className="flex flex-col w-full select-none h-fit text-[10vw] font-medium leading-[10vw]">
         <div className="w-full text-left">
-          <TextAppearUp delay={0} >WELCOME</TextAppearUp>
+          <TextAppearUp delay={0} >NAMASTE</TextAppearUp>
         </div>
         <div className="w-full text-center flex justify-center"><TextAppearUp delay={0.2}>THIS IS</TextAppearUp></div>
         <div className="w-full flex">

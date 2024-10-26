@@ -11,17 +11,19 @@ const Preloader = (preloader: PreloaderProps) => {
 
   useEffect(() => {
     function updateTimer() {
-      const rand = Math.round(Math.random() * 5);
+      const rand = Math.round(Math.random() * 10);
       setTimer((prev: number) => {
         if (prev + rand > 100) {
-          preloader.hasLoaded();
-          setLoaded(true)
+            setTimeout(() => {
+                setLoaded(true)
+                preloader.hasLoaded();
+            }, 500);
           return 100;
         } else {
           return prev + rand;
         }
       });
-      const randomTime = Math.random() * 200 + 50;
+      const randomTime = Math.random() * 300 + 75;
       setTimeout(updateTimer, randomTime);
     }
 

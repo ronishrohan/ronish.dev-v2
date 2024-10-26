@@ -1,15 +1,16 @@
 import  { useState } from "react";
 import Home from "./pages/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
+import Preloader from "./components/Preloader/Preloader";
 
 import { AnimatePresence } from "framer-motion";
 
 const App = () => {
-  const [loaded, setLoaded]: [boolean, Function] = useState(true);
+  const [loaded, setLoaded]: [boolean, Function] = useState(false);
  
   return (
     <AnimatePresence>
-      {/* <Preloader hasLoaded={() => setLoaded(true)}></Preloader> */}
+      <Preloader hasLoaded={() => setLoaded(true)}></Preloader>
       {loaded && (
         <>
           <Navbar></Navbar>
