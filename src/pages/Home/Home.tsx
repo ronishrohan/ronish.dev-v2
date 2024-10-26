@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactNode } from "react";
+import  {  ReactNode } from "react";
 import { motion } from "framer-motion";
 
 const TextAppearUp = ({ children, delay }: { children: ReactNode | null, delay: number }) => {

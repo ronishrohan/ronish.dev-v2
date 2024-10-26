@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useState } from "react";
+import  {  useState } from "react";
 import { motion } from "framer-motion";
 
 const Navbar = () => {
