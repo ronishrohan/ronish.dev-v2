@@ -1,11 +1,20 @@
-import  {  useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { useSetAtom } from "jotai";
+import { enabledAtom, expandedAtom } from "../../store/cursorStore";
 
 const Navbar = () => {
+  const setEnabled: Function = useSetAtom(enabledAtom)
+  const setExpanded: Function = useSetAtom(expandedAtom)
   return (
-    <header className="fixed w-full top-0 h-12 border-b-2 border-black flex items-center">
-      <div className="text-2xl font-medium m-2">ronish.dev</div>
-      <div className="ml-auto flex h-full w-fit">
+    <motion.header
+      initial={{ height: "0px" }}
+      animate={{ height: "48px" }}
+      transition={{delay: 0.7, duration: 0.9, ease: "circInOut"}}
+      className="fixed w-full top-0 overflow-hidden bg-white/90 backdrop-blur-sm z-50 border-b-[1px] border-black flex items-center"
+    >
+      <button onMouseEnter={() => setExpanded(true)} onMouseLeave={() => setExpanded(false)} className="text-2xl font-medium m-2">ronish.dev</button>
+      <div onMouseEnter={() => setEnabled(false)} onMouseLeave={() => setEnabled(true)}  className="ml-auto flex h-full w-fit">
         <Divider />
         <Button title="About"></Button>
         <Divider />
@@ -15,7 +24,7 @@ const Navbar = () => {
         <Divider />
         <Button title="Contact"></Button>
       </div>
-    </header>
+    </motion.header>
   );
 };
 
@@ -23,7 +32,7 @@ type ButtonProps = {
   title: string;
 };
 
-const Divider = () => <div className="w-0.5 h-full bg-black"></div>
+const Divider = () => <div className="w-[1px] h-full bg-black"></div>;
 
 const Button = (button: ButtonProps) => {
   const [hovered, setHovered]: [boolean, Function] = useState(false);

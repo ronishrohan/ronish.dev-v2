@@ -1,5 +1,7 @@
 import { MouseEventHandler, ReactNode, useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useSetAtom } from "jotai";
+import { enabledAtom, expandedAtom } from "../../store/cursorStore";
 
 const TextAppearUp = ({
   children,
@@ -16,7 +18,7 @@ const TextAppearUp = ({
         .split("")
         .map((char, index) => {
           return (
-            <div className="size-fit overflow-hidden">
+            <div className="size-fit overflow-hidden z-10">
               <motion.div
                 initial={{ y: "100%" }}
                 animate={{ y: "0%" }}
@@ -44,6 +46,8 @@ const Home = () => {
 
   const [developerHovered, setDeveloperHovered]: [boolean, Function] =
     useState(false);
+
+  const setExpanded: Function = useSetAtom(expandedAtom);
 
   useEffect(() => {
     function handleMouseMove(e: MouseEvent) {
@@ -76,7 +80,11 @@ const Home = () => {
           <TextAppearUp delay={0.2}>THIS IS</TextAppearUp>
         </div>
         <div className="w-full flex">
-          <div className="ml-auto group flex items-center justify-center relative">
+          <div
+            className="ml-auto group flex items-center justify-center relative"
+            onMouseEnter={() => setExpanded(true)}
+            onMouseLeave={() => setExpanded(false)}
+          >
             <TextAppearUp delay={0.5}>RONISH</TextAppearUp>
             <PeekImage></PeekImage>
           </div>
@@ -108,6 +116,15 @@ const HoverImage = ({
   pos: { x: number; y: number };
   image: string;
 }) => {
+  const setEnabled: Function = useSetAtom(enabledAtom);
+  useEffect(() => {
+    if (hovered) {
+      setEnabled(false);
+    } else {
+      setEnabled(true);
+    }
+  }, [hovered]);
+
   return (
     <>
       <motion.img
@@ -134,7 +151,7 @@ const HoverImage = ({
 const PeekImage = () => {
   return (
     <>
-      <div className="w-[10vw]  h-[20vw] -z-10 translate-y-[-50%]  absolute flex items-end justify-center -top-[9vw] overflow-hidden">
+      <div className="w-[10vw]  h-[20vw] z-0 translate-y-[-50%]  absolute flex items-end justify-center -top-[9vw] overflow-hidden">
         <motion.div
           initial={{ y: "50%", opacity: 0 }}
           animate={{ y: "24%", opacity: 1 }}
