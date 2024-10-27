@@ -10,6 +10,7 @@ const Cursor = () => {
     x: 0,
     y: 0,
   });
+  
   useEffect(() => {
     function handleMouseMove(e: MouseEvent) {
       setPos({ x: e.clientX, y: e.clientY });
