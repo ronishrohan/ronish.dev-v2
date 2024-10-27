@@ -36,7 +36,7 @@ const Work = () => {
 
   const [active, setActive]: [number, Function] = useState(0);
   return (
-    <section className=" h-fit w-screen flex flex-col p-4 mt-10">
+    <section className=" h-fit w-screen z-20 flex flex-col p-4 pt-10">
       <div className="h-[1px] bg-black w-full"></div>
       <TextSlider></TextSlider>
       <div className="h-[60vh] w-full flex gap-10">
@@ -86,7 +86,7 @@ const WorkCarousel = (props: {
             return (
               <>
                 <motion.div
-                  key={index}
+                  key={index + project.title}
                   style={{ y: props.imageParallaxY }}
                   className="h-full overflow-hidden shrink-0 w-[60vw] flex items-center justify-center"
                 >

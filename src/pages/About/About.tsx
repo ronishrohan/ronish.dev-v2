@@ -7,10 +7,10 @@ import { expandedAtom } from "../../store/cursorStore";
 
 const About = () => {
   return (
-    <section className="h-screen w-full p-4 flex flex-col">
+    <section className="h-screen w-full z-20 p-4 flex flex-col">
       <div className="h-[1px] bg-black w-full"></div>
       <div className="mt-10 items-center overflow-hidden flex gap-4 shrink-0">
-        <p className=" text-[2.4vw] leading-[2.4vw]  font-normal ">
+        <div className=" text-[2.4vw] leading-[2.4vw]  font-normal ">
           <TextAppearWords>
             I'm Ronish Rohan, a Computer Science student from India with a
             passion for creating purposeful and elegant interfaces. Skilled in
@@ -19,7 +19,7 @@ const About = () => {
             mobile. My approach combines frontend expertise with backend insight
             to craft seamless, impactful user journeys.
           </TextAppearWords>
-        </p>
+        </div>
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
@@ -107,12 +107,12 @@ const Info = ({
   info: ReactNode;
   onClick?: Function;
 }) => {
-  const setExpanded : Function = useSetAtom(expandedAtom)
+  const setExpanded: Function = useSetAtom(expandedAtom);
   const [hovered, setHovered]: [boolean, Function] = useState(false);
 
   useEffect(() => {
-    setExpanded(hovered)
-  }, [hovered])
+    setExpanded(hovered);
+  }, [hovered]);
 
   function handleClick() {
     if (onClick) {
@@ -124,7 +124,7 @@ const Info = ({
       onClick={handleClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative h-1/2 hover:fill-white hover:stroke-white p-2 w-full hover:bg-black hover:text-white overflow-hidden transition-colors border-2 rounded-lg border-black/20"
+      className={`relative h-1/2  hover:fill-white hover:stroke-white p-2 w-full hover:bg-black hover:text-white overflow-hidden transition-colors border-2 rounded-lg border-black/20`}
     >
       <motion.div
         initial={{ y: 0 }}

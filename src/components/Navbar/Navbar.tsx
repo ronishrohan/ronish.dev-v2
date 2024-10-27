@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useSetAtom } from "jotai";
 import { enabledAtom, expandedAtom } from "../../store/cursorStore";
+import { useLenis } from "lenis/react";
 
 const Navbar = () => {
+  const lenis = useLenis();
   const setEnabled: Function = useSetAtom(enabledAtom);
   const setExpanded: Function = useSetAtom(expandedAtom);
+
+  useEffect(() => {
+    lenis?.scrollTo(20)
+  })
   return (
     <motion.header
       initial={{ height: "0px" }}
