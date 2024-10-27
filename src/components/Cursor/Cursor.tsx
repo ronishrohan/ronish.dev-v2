@@ -30,7 +30,7 @@ const Cursor = () => {
         transition={{ duration: 0.5, ease: "circOut", scale: {
           duration: 0.5, ease: "circOut"
         } }}
-        className=" fixed top-0 left-0 pointer-events-none rounded-full bg-white z-[100] mix-blend-difference size-[2vw] flex items-center justify-center"
+        className=" fixed top-0 left-0 pointer-events-none rounded-full border-2 border-white  z-[100] mix-blend-difference size-[2vw] flex items-center justify-center"
       ></motion.div>
     </AnimatePresence>
   );
