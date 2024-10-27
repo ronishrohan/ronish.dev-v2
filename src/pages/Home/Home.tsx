@@ -4,7 +4,6 @@ import { useSetAtom } from "jotai";
 import { enabledAtom, expandedAtom } from "../../store/cursorStore";
 import TextAppearUp from "../../components/Text/TextAppear";
 
-
 const Home = () => {
   const [mousePos, setMousePos]: [{ x: number; y: number }, Function] =
     useState({ x: 0, y: 0 });
@@ -13,6 +12,10 @@ const Home = () => {
 
   const [developerHovered, setDeveloperHovered]: [boolean, Function] =
     useState(false);
+
+  const [nameHovered, setNameHovered]: [boolean, Function] = useState(false);
+
+
 
   const setExpanded: Function = useSetAtom(expandedAtom);
 
@@ -49,11 +52,17 @@ const Home = () => {
         <div className="w-full flex">
           <div
             className="ml-auto group flex items-center justify-center relative"
-            onMouseEnter={() => setExpanded(true)}
-            onMouseLeave={() => setExpanded(false)}
+            onMouseEnter={() => {
+              setNameHovered(true);
+              setExpanded(true);
+            }}
+            onMouseLeave={() => {
+              setExpanded(false);
+              setNameHovered(false);
+            }}
           >
             <TextAppearUp delay={0.5}>RONISH</TextAppearUp>
-            <PeekImage></PeekImage>
+            <PeekImage hovered={nameHovered}></PeekImage>
           </div>
         </div>
         <div className="w-full flex justify-start">
@@ -115,17 +124,17 @@ const HoverImage = ({
   );
 };
 
-const PeekImage = () => {
+const PeekImage = ({ hovered }: { hovered: boolean }) => {
   return (
     <>
       <div className="w-[10vw]  h-[20vw] z-0 translate-y-[-50%]  absolute flex items-end justify-center -top-[9vw] overflow-hidden">
         <motion.div
           initial={{ y: "50%", opacity: 0 }}
-          animate={{ y: "24%", opacity: 1 }}
+          animate={{ y: hovered ? "15%" : "24%", opacity: 1 }}
           transition={{ duration: 1, ease: "circInOut", delay: 0.7 }}
           className="flex group justify-center items-center"
         >
-          <div className="bg-white group-hover:scale-100 transition-all opacity-0 group-hover:opacity-100 scale-90 border-2 border-black/20 w-[100%] h-[6vw] rounded-lg top-[-20%] absolute p-2 flex items-center justify-center text-[1vw] font-normal">
+          <div className="bg-white pointer-events-none group-hover:pointer-events-auto group-hover:scale-100 transition-all opacity-0 group-hover:opacity-100 scale-90 border-2 border-black/20 w-[100%] h-[6vw] rounded-lg top-[-20%] absolute p-2 flex items-center justify-center text-[1vw] font-normal">
             Nice to meet you :)
           </div>
           <motion.img

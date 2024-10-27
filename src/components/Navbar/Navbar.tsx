@@ -4,17 +4,29 @@ import { useSetAtom } from "jotai";
 import { enabledAtom, expandedAtom } from "../../store/cursorStore";
 
 const Navbar = () => {
-  const setEnabled: Function = useSetAtom(enabledAtom)
-  const setExpanded: Function = useSetAtom(expandedAtom)
+  const setEnabled: Function = useSetAtom(enabledAtom);
+  const setExpanded: Function = useSetAtom(expandedAtom);
   return (
     <motion.header
       initial={{ height: "0px" }}
       animate={{ height: "48px" }}
-      transition={{delay: 0.7, duration: 0.9, ease: "circInOut"}}
+      transition={{ delay: 0.7, duration: 0.9, ease: "circInOut" }}
       className="fixed w-full top-0 overflow-hidden bg-white/90 backdrop-blur-sm z-50 border-b-[1px] border-black flex items-center"
     >
-      <button onMouseEnter={() => setExpanded(true)} onMouseLeave={() => setExpanded(false)} className="text-2xl font-medium m-2">ronish.dev</button>
-      <div onMouseEnter={() => setEnabled(false)} onMouseLeave={() => setEnabled(true)}  className="ml-auto flex h-full w-fit">
+      <button
+        onMouseEnter={() => setExpanded(true)}
+        onMouseLeave={() => setExpanded(false)}
+        className="text-2xl font-medium m-2 gap-2 flex items-center"
+      >
+        <img src="/icon.svg"  alt="" className="size-8" />
+        <div>ronish.dev</div>
+
+      </button>
+      <div
+        onMouseEnter={() => setEnabled(false)}
+        onMouseLeave={() => setEnabled(true)}
+        className="ml-auto flex h-full w-fit"
+      >
         <Divider />
         <Button title="About"></Button>
         <Divider />

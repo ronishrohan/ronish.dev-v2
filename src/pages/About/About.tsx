@@ -1,7 +1,9 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { icons } from "../../util/icons";
 import TextAppearWords from "../../components/Text/TextAppearWords";
+import { useSetAtom } from "jotai";
+import { expandedAtom } from "../../store/cursorStore";
 
 const About = () => {
   return (
@@ -105,7 +107,12 @@ const Info = ({
   info: ReactNode;
   onClick?: Function;
 }) => {
+  const setExpanded : Function = useSetAtom(expandedAtom)
   const [hovered, setHovered]: [boolean, Function] = useState(false);
+
+  useEffect(() => {
+    setExpanded(hovered)
+  }, [hovered])
 
   function handleClick() {
     if (onClick) {

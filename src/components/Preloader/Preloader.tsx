@@ -17,6 +17,7 @@ const Preloader = (preloader: PreloaderProps) => {
             setTimeout(() => {
                 setLoaded(true)
                 preloader.hasLoaded();
+                return
             }, 500);
           return 100;
         } else {
@@ -28,7 +29,7 @@ const Preloader = (preloader: PreloaderProps) => {
     }
 
     updateTimer();
-    console.log(timer);
+    
   }, []);
   return (
     <motion.div

@@ -9,6 +9,7 @@ import { AnimatePresence } from "framer-motion";
 import About from "./pages/About/About";
 import Cursor from "./components/Cursor/Cursor";
 import Work from "./pages/Work/Work";
+import Services from "./pages/Services/Services";
 
 const App = () => {
   const [loaded, setLoaded]: [boolean, Function] = useState(false);
@@ -23,6 +24,7 @@ const App = () => {
           <Home></Home>
           <About></About>
           <Work></Work>
+          <Services></Services>
         </>
       )}
     </ReactLenis>
