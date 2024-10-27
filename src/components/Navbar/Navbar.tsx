@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Navbar = () => {
   return (
-    <header className="sticky top-0 h-12 border-b-2 border-black flex items-center">
+    <header className="fixed w-full top-0 h-12 border-b-2 border-black flex items-center">
       <div className="text-2xl font-medium m-2">ronish.dev</div>
       <div className="ml-auto flex h-full w-fit">
         <Divider />
@@ -31,7 +31,7 @@ const Button = (button: ButtonProps) => {
     <button
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative overflow-hidden h-full px-4 flex font-medium items-center justify-center"
+      className="relative overflow-hidden h-full px-4 flex font-normal items-center justify-center"
     >
       <motion.div
         initial={{ y: 0 }}
