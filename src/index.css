@@ -28,6 +28,9 @@
   font-style: italic;
 }
 
+body{
+  overflow-x: hidden;
+}
 
 #root, html, body{
   background-color: white;

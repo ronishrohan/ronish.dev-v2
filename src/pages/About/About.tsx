@@ -1,33 +1,7 @@
 import { ReactNode, useState } from "react";
 import { motion } from "framer-motion";
 import { icons } from "../../util/icons";
-
-const TextAppearWords = ({ children }: { children: ReactNode }) => {
-  return (
-    <div className="flex gap-[0.2em] flex-wrap">
-      {children
-        ?.toString()
-        .split(" ")
-        .map((word, index) => {
-          return (
-            <div className="overflow-hidden flex">
-              <motion.div
-                initial={{ y: "100%" }}
-                whileInView={{ y: "0%" }}
-                transition={{
-                  duration: 0.6,
-                  delay: index * 0.005,
-                  ease: "circOut",
-                }}
-              >
-                {word}
-              </motion.div>
-            </div>
-          );
-        })}
-    </div>
-  );
-};
+import TextAppearWords from "../../components/Text/TextAppearWords";
 
 const About = () => {
   return (
