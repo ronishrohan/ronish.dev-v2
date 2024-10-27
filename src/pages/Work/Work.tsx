@@ -18,7 +18,7 @@ const projects = [
   { title: "PRTFLIO", image: "/projects/portfolio.png" },
   { title: "PAYPEEK", image: "/projects/paypeek.png" },
   { title: "CALCULATOR", image: "/projects/calculator.png" },
-  { title: "REDDIT CLONE", image: "/projects/reddit.png" },
+  { title: "WEATHER", image: "/projects/weather.png" },
 ];
 
 const Work = () => {
@@ -57,6 +57,7 @@ const Work = () => {
           })}
         </div>
         <WorkCarousel
+          current={active}
           imageContainer={imageContainer}
           imageParallaxY={imageParallaxY}
         ></WorkCarousel>
@@ -68,32 +69,37 @@ const Work = () => {
 const WorkCarousel = (props: {
   imageContainer: RefObject<HTMLDivElement>;
   imageParallaxY: any;
+  current: number;
 }) => {
   return (
     <>
       <div
         ref={props.imageContainer}
-        className="h-full w-[60vw] shrink-0 flex items-center justify-start rounded-lg bg-black overflow-hidden relative "
+        className="h-full w-[60vw] shrink-0 flex items-center justify-start rounded-lg overflow-hidden bg-black  relative "
       >
-        <div className="size-full flex translate-x-[-100%]">
+        <motion.div
+          animate={{ y: `-${props.current * 100}%` }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+          className="size-full flex flex-col"
+        >
           {projects.map((project, index) => {
             return (
               <>
                 <motion.div
-                  key={index + project.image}
+                  key={index}
                   style={{ y: props.imageParallaxY }}
                   className="h-full overflow-hidden shrink-0 w-[60vw] flex items-center justify-center"
                 >
                   <img
                     src={project.image}
-                    className="absolute size-full object-cover scale-105"
+                    className="absolute size-full object-cover scale-y-105"
                     alt=""
                   />
                 </motion.div>
               </>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </>
   );
@@ -139,38 +145,45 @@ const WorkButton = ({
 };
 
 const TextSlider = () => {
-  const lenis = useLenis();
-  const firstText: RefObject<HTMLDivElement> = createRef();
-  const secondText: RefObject<HTMLDivElement> = createRef();
-  let xPercent: any = 0;
-  const [direction, setDirection]: [number, Function] = useState(-1);
+  const firstText = createRef<HTMLDivElement>();
+  const secondText = createRef<HTMLDivElement>();
 
-  function animate() {
-    gsap.set(firstText.current, { xPercent: xPercent });
-    gsap.set(secondText.current, { xPercent: xPercent });
-
-    xPercent += 0.1 * direction;
-
-    
-
-    if (Math.abs(xPercent) > 100) xPercent = 0;
-
-    requestAnimationFrame(animate);
-  }
   useEffect(() => {
-    animate();
-  });
+    const duration = 10;
+
+    if (firstText.current && secondText.current) {
+      
+      const tween = gsap.to([firstText.current, secondText.current], {
+        xPercent: -100,
+        ease: "none",
+        repeat: -1,
+        overwrite: "auto",
+        duration,
+        modifiers: {
+          xPercent: (xPercent) => {
+            return `${parseFloat(xPercent) % 100}`;
+          },
+        },
+      });
+
+      gsap.ticker.add(() => {
+        tween.progress((tween.progress() + 0.001) % 1);
+      });
+
+      // Optional cleanup
+      
+    }
+  }, []);
+
   return (
-    <>
-      <div className="flex text-[15vw] font-normal shrink-0  whitespace-nowrap relative w-fit">
-        <div className="mr-4" ref={firstText}>
-          MY WORKS MY WORKS
-        </div>
-        <div ref={secondText} className="left-full absolute">
-          MY WORKS MY WORKS
-        </div>
+    <div className="flex text-[15vw] font-normal shrink-0 whitespace-nowrap relative w-fit">
+      <div className="" ref={firstText}>
+        MY WORKS MY WORKS&nbsp;
       </div>
-    </>
+      <div ref={secondText} className="left-full absolute">
+        MY WORKS MY WORKS&nbsp;
+      </div>
+    </div>
   );
 };
 
