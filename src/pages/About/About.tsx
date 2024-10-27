@@ -1,5 +1,33 @@
 import { ReactNode, useState } from "react";
 import { motion } from "framer-motion";
+import { icons } from "../../util/icons";
+
+const TextAppearWords = ({ children }: { children: ReactNode }) => {
+  return (
+    <div className="flex gap-[0.2em] flex-wrap">
+      {children
+        ?.toString()
+        .split(" ")
+        .map((word, index) => {
+          return (
+            <div className="overflow-hidden flex">
+              <motion.div
+                initial={{ y: "100%" }}
+                whileInView={{ y: "0%" }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.005,
+                  ease: "circOut",
+                }}
+              >
+                {word}
+              </motion.div>
+            </div>
+          );
+        })}
+    </div>
+  );
+};
 
 const About = () => {
   return (
@@ -7,20 +35,27 @@ const About = () => {
       <div className="h-[1px] bg-black w-full"></div>
       <div className="mt-10 items-center overflow-hidden flex gap-4 shrink-0">
         <p className=" text-[2.4vw] leading-[2.4vw]  font-normal ">
-          I'm Ronish Rohan, a Computer Science student from India with a passion
-          for creating purposeful and elegant interfaces. Skilled in React.js,
-          Next.js, Framer Motion, Tailwind CSS, and Flutter , I focus on
-          building responsive, immersive experiences across web and mobile. My
-          approach combines frontend expertise with backend insight to craft
-          seamless, impactful user journeys.
+          <TextAppearWords>
+            I'm Ronish Rohan, a Computer Science student from India with a
+            passion for creating purposeful and elegant interfaces. Skilled in
+            React.js, Next.js, Framer Motion, Tailwind CSS, and Flutter , I
+            focus on building responsive, immersive experiences across web and
+            mobile. My approach combines frontend expertise with backend insight
+            to craft seamless, impactful user journeys.
+          </TextAppearWords>
         </p>
-        <div className="h-full w-[20vw] text-j shrink-0 rounded-lg overflow-hidden bg-black flex items-start justify-center  relative">
+        <motion.div
+          initial={{ scale: 0.5, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, ease: "circOut" }}
+          className="h-full w-[20vw] text-j shrink-0 rounded-lg overflow-hidden bg-black flex items-start justify-center  relative"
+        >
           <img
             src="https://media1.tenor.com/m/iepOJafTgJ0AAAAC/meimei-mei.gif"
             className="w-full absolute object-cover "
             alt=""
           />
-        </div>
+        </motion.div>
       </div>
       <div className="h-full flex  gap-4 mt-10">
         <div className="flex h-full w-1/2 gap-4">
@@ -108,7 +143,7 @@ const Info = ({
       onClick={handleClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative h-1/2 p-2 w-full hover:bg-black hover:text-white overflow-hidden transition-colors border-2 rounded-lg border-black/20"
+      className="relative h-1/2 hover:fill-white hover:stroke-white p-2 w-full hover:bg-black hover:text-white overflow-hidden transition-colors border-2 rounded-lg border-black/20"
     >
       <motion.div
         initial={{ y: 0 }}
@@ -126,9 +161,17 @@ const Info = ({
       >
         {info}
       </motion.div>
-      <div className="absolute size-fit bottom-0 right-0" >
-        
-      </div>
+      {onClick && (
+        <div className="bottom-0 right-0 absolute">
+          <motion.div
+            animate={{ rotate: hovered ? 0 : 45 }}
+            transition={{ duration: 0.4, ease: "circOut" }}
+            className=" size-12"
+          >
+            {icons.arrow}
+          </motion.div>
+        </div>
+      )}
     </motion.div>
   );
 };

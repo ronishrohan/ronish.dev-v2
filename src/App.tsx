@@ -20,6 +20,7 @@ const App = () => {
           <Cursor></Cursor>
           <Navbar></Navbar>
           <Home></Home>
+          
           <About></About>
         </>
       )}
