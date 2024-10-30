@@ -7,7 +7,7 @@ import { expandedAtom } from "../../store/cursorStore";
 
 const About = () => {
   return (
-    <section data-scroll-section className="h-screen w-full z-20 p-4 flex flex-col">
+    <section id="about" data-scroll-section className="h-screen w-full z-20 p-4 flex flex-col">
       <div className="h-[1px] bg-black w-full"></div>
       <div className="mt-10 items-center overflow-hidden flex gap-4 shrink-0">
         <div className=" text-[2.4vw] leading-[2.4vw]  font-medium ">

@@ -22,6 +22,7 @@ const Navbar = () => {
       <button
         onMouseEnter={() => setExpanded(true)}
         onMouseLeave={() => setExpanded(false)}
+        onClick={() => lenis?.scrollTo("#home")}
         className="text-2xl font-medium m-2 gap-2 flex items-center"
       >
         <img src="/icon.svg"  alt="" className="size-8" />
@@ -54,8 +55,16 @@ const Divider = () => <div className="w-[1px] h-full bg-black"></div>;
 
 const Button = (button: ButtonProps) => {
   const [hovered, setHovered]: [boolean, Function] = useState(false);
+  const lenis = useLenis()
+
+
+  function handleClick(){
+    lenis?.scrollTo(`#${button.title.toLowerCase()}`)
+  }
+
   return (
     <button
+      onClick={handleClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className="relative overflow-hidden h-full px-4 flex font-normal items-center justify-center"

@@ -28,7 +28,9 @@ const Contact = () => {
   return (
     <>
       <div
+        
         ref={ghostRef}
+        id="contact"
         className="h-[100vh] w-screen bg-transparent z-20 pointer-events-none"
       ></div>
       <div className="h-[100vh] w-screen -z-10 p-4 justify-end fixed bottom-0 flex flex-col pt-10 bg-black text-white">

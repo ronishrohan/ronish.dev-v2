@@ -3,7 +3,7 @@ import TextAppearWords from "../../components/Text/TextAppearWords";
 
 const Services = () => {
   return (
-    <section className="h-fit w-screen p-4 flex flex-col">
+    <section id="services" className="h-fit w-screen p-4 flex flex-col">
       <div className="h-[1px] w-full bg-black mt-10 mb-4"></div>
       <div className="text-center w-full text-[13vw] leading-[14vw] flex gap-[4vw] justify-center">
         WHAT I{" "}
