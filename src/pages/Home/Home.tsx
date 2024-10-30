@@ -30,7 +30,7 @@ const Home = () => {
   }, []);
 
   return (
-    <section className="size-full z-20 font-montreal flex flex-col items-center justify-center p-4">
+    <section data-scroll-section className="size-full h-[100vh] z-20 font-montreal flex flex-col items-center justify-center p-4">
       <div className="flex flex-col w-full select-none h-fit text-[10vw] font-medium leading-[10vw]">
         <div className="w-full flex">
           <div

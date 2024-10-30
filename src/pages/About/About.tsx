@@ -7,10 +7,10 @@ import { expandedAtom } from "../../store/cursorStore";
 
 const About = () => {
   return (
-    <section className="h-screen w-full z-20 p-4 flex flex-col">
+    <section data-scroll-section className="h-screen w-full z-20 p-4 flex flex-col">
       <div className="h-[1px] bg-black w-full"></div>
       <div className="mt-10 items-center overflow-hidden flex gap-4 shrink-0">
-        <div className=" text-[2.4vw] leading-[2.4vw]  font-normal ">
+        <div className=" text-[2.4vw] leading-[2.4vw]  font-medium ">
           <TextAppearWords>
             I'm Ronish Rohan, a Computer Science student from India with a
             passion for creating purposeful and elegant interfaces. Skilled in
