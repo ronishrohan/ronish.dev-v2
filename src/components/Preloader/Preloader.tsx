@@ -41,6 +41,7 @@ const Preloader = (preloader: PreloaderProps) => {
       <div className="absolute bottom-0 right-0 m-4 text-[14vw] leading-[14vw]">
         {timer}%
       </div>
+      <div className="absolute bottom-0 left-0 m-4 text-[2vw] leading-[2vw]" >GETTINGS THINGS READY</div>
     </motion.div>
   );
 };

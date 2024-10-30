@@ -79,7 +79,7 @@ const WorkCarousel = (props: {
       >
         <motion.div
           animate={{ y: `-${props.current * 100}%` }}
-          transition={{ duration: 1, ease: "easeInOut" }}
+          transition={{ duration: 0.5, ease: "circInOut" }}
           className="size-full flex flex-col"
         >
           {projects.map((project, index) => {

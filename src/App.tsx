@@ -25,6 +25,7 @@ const App = () => {
             <Home></Home>
             <About></About>
             <Work></Work>
+            <Services></Services>
             <Contact></Contact>
           </ReactLenis>
         </>
