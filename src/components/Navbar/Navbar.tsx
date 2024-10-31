@@ -41,7 +41,7 @@ const Navbar = () => {
         <Divider />
         <Button title="Services"></Button>
         <Divider />
-        <Button title="Contact"></Button>
+        <Button title="Contact2"></Button>
       </div>
     </motion.header>
   );
@@ -51,9 +51,9 @@ type ButtonProps = {
   title: string;
 };
 
-const Divider = () => <div className="w-[1px] h-full bg-black"></div>;
+export const Divider = () => <div className="w-[1px] h-full bg-black"></div>;
 
-const Button = (button: ButtonProps) => {
+export const Button = (button: ButtonProps) => {
   const [hovered, setHovered]: [boolean, Function] = useState(false);
   const lenis = useLenis()
 

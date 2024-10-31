@@ -38,8 +38,8 @@ const Work = () => {
   return (
     <section id="work" data-scroll-section className=" h-fit w-screen z-20 flex flex-col p-4 pt-10">
       <div className="h-[1px] bg-black w-full"></div>
-      <TextSlider></TextSlider>
-      <div className="h-[80vh] w-full flex gap-10">
+      <div className="hidden sm:block"><TextSlider></TextSlider></div>
+      <div className="h-[80vh] w-full gap-10 hidden sm:flex">
         <div
           onMouseEnter={() => setExpanded(true)}
           onMouseLeave={() => setExpanded(false)}
@@ -62,6 +62,21 @@ const Work = () => {
           imageContainer={imageContainer}
           imageParallaxY={imageParallaxY}
         ></WorkCarousel>
+      </div>
+      <div className="flex flex-col w-full h-[60vh] sm:hidden" >
+        <div className="shrink-0 mt-10 font-normal text-[13vw] mb-4 w-full text-left">WORKS</div>
+        <div className="h-[10px] bg-black w-full" ></div>
+      {projects.map((project, index) => {
+            return (
+              <WorkButton
+                key={index + project.title}
+                index={index}
+                title={project.title}
+                onHover={() => setActive(index)}
+                onClick = {() => window.open(project.url, '_blank')}
+              ></WorkButton>
+            );
+          })}
       </div>
     </section>
   );
@@ -129,7 +144,7 @@ const WorkButton = ({
       onClick={() => onClick()}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="size-full border-b cursor-none border-black flex items-center justify-center font-medium text-[2vw] relative"
+      className="size-full border-b cursor-none border-black flex items-center justify-center font-medium text-[4vw] sm:text-[2vw] relative"
     >
       <div className="flex z-10 size-full px-2">
         <div className="mr-10 text-black/70">{index as ReactNode}</div>

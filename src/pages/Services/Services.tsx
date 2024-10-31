@@ -63,13 +63,26 @@ const Services = () => {
   return (
     <section id="services" className="h-fit w-screen  flex flex-col">
       <div className="h-[1px] w-full bg-black mt-10 mb-4"></div>
-      <div className="text-center w-full text-[13vw] leading-[14vw] flex gap-[4vw] justify-center">
+      <div className="text-center w-full text-[13vw] leading-[14vw] flex gap-[4vw] px-4 justify-start sm:justify-center">
         WHAT I{" "}
         <span className="italic">
           <TextAppearWords>OFFER</TextAppearWords>
         </span>
       </div>
-      <div ref={wrapperRef} className="h-[400vh] flex relative gap-4 ">
+      <div className="sm:hidden flex flex-col h-[60vh] underline p-4 text-[10vw]">
+      {serviceList.map((service, index) => {
+                return (
+                  <ServiceButton
+                    key={index + service.title}
+                    setEnableWidget={setWidgetEnabled}
+                    onHover={() => setCurrent(index)}
+                  >
+                    {service.title.toUpperCase()}
+                  </ServiceButton>
+                );
+              })}
+      </div>
+      <div ref={wrapperRef} className="h-[400vh] hidden  sm:flex relative gap-4 ">
         <div
           ref={w2}
           className="h-screen w-full overflow-hidden flex items-center justify-center sticky top-0"
@@ -85,7 +98,7 @@ const Services = () => {
             />
             <motion.div
               style={{ y: scrollInner, opacity: s1.scrollYProgress }}
-              className="text-[10vw] justify-center px-4 whitespace-nowrap leading-[10vw] text-white font-bold z-30 size-full absolute top-3/4 flex flex-col items-start"
+              className="text-[10vw] sm:justify-center justify-start px-4 whitespace-nowrap leading-[10vw] text-white font-bold z-30 size-full absolute top-3/4 flex flex-col items-start"
             >
               {serviceList.map((service, index) => {
                 return (
