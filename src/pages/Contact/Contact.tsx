@@ -74,14 +74,14 @@ const Contact = () => {
         <div className="size-full flex gap-4 my-4 items-end">
           <motion.div style={{ y: `${100-(simple*100)}%`, height: `${Math.max(75,simple*100)}%`, opacity: simple }} className="overflow-hidden w-2/3 h-full gap-4 shrink-0 flex flex-col">
             <div className="size-full flex gap-4">
-              <ContactButton title="Instagram"></ContactButton>
-              <ContactButton title="Discord"></ContactButton>
-              <ContactButton title="Linkedin"></ContactButton>
+              <ContactButton description="I post my art here" title="Instagram"></ContactButton>
+              <ContactButton description="You can contact me here, always active :/" title="Discord"></ContactButton>
+              <ContactButton description="My linkedin profile" title="Linkedin"></ContactButton>
             </div>
             <div className="size-full flex gap-4">
-              <ContactButton title="Gmail"></ContactButton>
-              <ContactButton title="Reddit"></ContactButton>
-              <ContactButton title="Github"></ContactButton>
+              <ContactButton description="Send me mail or something idk" title="Gmail"></ContactButton>
+              <ContactButton description="Where I shitpost" title="Reddit"></ContactButton>
+              <ContactButton description="All my repositories are here, feel free to check them out" title="Github"></ContactButton>
             </div>
           </motion.div>
           <motion.div
@@ -105,11 +105,11 @@ const Contact = () => {
   );
 };
 
-const ContactButton = ({ title }: { title: string }) => {
+const ContactButton = ({ title, description }: { title: string, description: string }) => {
   return (
     <button className=" size-full overflow-hidden border group hover:fill-black relative fill-white flex-col transition-colors border-white/40 rounded-lg flex items-start justify-start p-4 hover:bg-white hover:text-black">
       {title}
-      <div className="text-black font-normal">I post about stuff here</div>
+      <div className="text-black font-normal text-left">{description}</div>
       <div className="absolute bottom-0 right-0 size-[2vw] m-4 rotate-45 group-hover:rotate-0 transition-transform ">
         {icons.arrow}
       </div>
