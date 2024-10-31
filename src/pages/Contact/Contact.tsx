@@ -7,6 +7,8 @@ import {
 } from "framer-motion";
 import React, { createRef, RefObject, useEffect, useState } from "react";
 import { icons } from "../../util/icons";
+import { useSetAtom } from "jotai";
+import { expandedAtom } from "../../store/cursorStore";
 
 const Contact = () => {
   const ghostRef: RefObject<HTMLDivElement> = createRef();
@@ -106,8 +108,9 @@ const Contact = () => {
 };
 
 const ContactButton = ({ title, description }: { title: string, description: string }) => {
+  const setExpanded = useSetAtom(expandedAtom)
   return (
-    <button className=" size-full overflow-hidden border group hover:fill-black relative fill-white flex-col transition-colors border-white/40 rounded-lg flex items-start justify-start p-4 hover:bg-white hover:text-black">
+    <button onMouseEnter={() => setExpanded(true)} onMouseLeave={() => setExpanded(false)} className="cursor-none size-full overflow-hidden border group hover:fill-black relative fill-white flex-col transition-colors border-white/40 rounded-lg flex items-start justify-start p-4 hover:bg-white hover:text-black">
       {title}
       <div className="text-black font-normal text-left">{description}</div>
       <div className="absolute bottom-0 right-0 size-[2vw] m-4 rotate-45 group-hover:rotate-0 transition-transform ">

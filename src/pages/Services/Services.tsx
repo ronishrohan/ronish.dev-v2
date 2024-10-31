@@ -188,7 +188,7 @@ const ServiceButton = ({
         onHover();
       }}
       onMouseLeave={() => setEnableWidget(false)}
-      className="cursor-default hover:text-red-600 transition-colors"
+      className="cursor-none hover:text-red-600 transition-colors"
     >
       <TextAppearWords>{children}</TextAppearWords>
     </button>
