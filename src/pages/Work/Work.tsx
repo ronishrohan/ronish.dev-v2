@@ -13,12 +13,12 @@ import { useSetAtom } from "jotai";
 import { expandedAtom } from "../../store/cursorStore";
 
 const projects = [
-  { title: "WAFFLE", image: "/projects/waffle.png" },
-  { title: "LYRCTYPE", image: "/projects/lyrc.png" },
-  { title: "PRTFLIO", image: "/projects/portfolio.png" },
-  { title: "PAYPEEK", image: "/projects/paypeek.png" },
-  { title: "CALCULATOR", image: "/projects/calculator.png" },
-  { title: "WEATHER", image: "/projects/weather.png" },
+  { title: "WAFFLE", image: "/projects/waffle.png", url: "https://wafl.vercel.app/" },
+  { title: "LYRCTYPE", image: "/projects/lyrc.png", url: "https://lyrc-nu.vercel.app/home" },
+  { title: "PRTFLIO", image: "/projects/portfolio.png", url: "https://ronish.dev/" },
+  { title: "PAYPEEK", image: "/projects/paypeek.png", url: "https://paypeek.vercel.app/" },
+  { title: "CALCULATOR", image: "/projects/calculator.png", url: "https://clcltr.vercel.app/" },
+  { title: "WEATHER", image: "/projects/weather.png", url: "https://ronishrohan.github.io/weather/" },
 ];
 
 const Work = () => {
@@ -52,6 +52,7 @@ const Work = () => {
                 index={index}
                 title={project.title}
                 onHover={() => setActive(index)}
+                onClick = {() => window.open(project.url, '_blank')}
               ></WorkButton>
             );
           })}
@@ -109,10 +110,12 @@ const WorkButton = ({
   index,
   title,
   onHover,
+  onClick
 }: {
   index: Number;
   title: String;
   onHover: Function;
+  onClick: Function;
 }) => {
   const [hovered, setHovered]: [boolean, Function] = useState(false);
 
@@ -122,10 +125,11 @@ const WorkButton = ({
     }
   }, [hovered]);
   return (
-    <div
+    <button
+      onClick={() => onClick()}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="size-full border-b border-black flex items-center justify-center font-medium text-[2vw] relative"
+      className="size-full border-b cursor-none border-black flex items-center justify-center font-medium text-[2vw] relative"
     >
       <div className="flex z-10 size-full px-2">
         <div className="mr-10 text-black/70">{index as ReactNode}</div>
@@ -140,7 +144,7 @@ const WorkButton = ({
         <div className="mr-10 text-white/70">{index as ReactNode}</div>
         <div>{title.toUpperCase() as ReactNode}</div>
       </motion.div>
-    </div>
+    </button>
   );
 };
 
