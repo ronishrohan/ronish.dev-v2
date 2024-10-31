@@ -1,5 +1,5 @@
-import { MouseEventHandler, ReactNode, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { createRef, MouseEventHandler, ReactNode, useEffect, useState } from "react";
+import { motion, useMotionValueEvent, useScroll, useSpring, useTransform } from "framer-motion";
 import { useSetAtom } from "jotai";
 import { enabledAtom, expandedAtom } from "../../store/cursorStore";
 import TextAppearUp from "../../components/Text/TextAppear";
@@ -14,6 +14,21 @@ const Home = () => {
     useState(false);
 
   const [nameHovered, setNameHovered]: [boolean, Function] = useState(false);
+
+  const pageRef = createRef<HTMLDivElement>();
+
+  const scroll = useScroll({target: pageRef, offset: ["1 1", "1 0"]});
+
+  const scrollMotionValue = useSpring(scroll.scrollYProgress, {
+    stiffness: 400,
+    damping: 30,});
+
+  const [scrollp, setScrollp] = useState<number>(0)
+
+  useMotionValueEvent(scrollMotionValue, "change", (latest) => {
+    console.log(latest)
+    setScrollp(latest)
+  })
 
 
 
@@ -30,10 +45,11 @@ const Home = () => {
   }, []);
 
   return (
-    <section  data-scroll-section id="home" className="size-full h-[100vh] z-20 font-montreal flex flex-col items-center justify-center p-4">
+    <section ref={pageRef}  data-scroll-section id="home" className="size-full h-[100vh] z-20 font-montreal flex flex-col items-center justify-center p-4">
       <div className="flex flex-col w-full select-none h-fit text-[10vw] font-medium leading-[10vw]">
         <div className="w-full flex">
-          <div
+          <motion.div
+          style={{x: scrollp*-100}}
             onMouseEnter={() => setWelcomeHovered(true)}
             onMouseLeave={() => setWelcomeHovered(false)}
             className="mr-auto group"
@@ -44,12 +60,12 @@ const Home = () => {
               pos={mousePos}
             ></HoverImage>
             <TextAppearUp delay={0}>NAMASTE</TextAppearUp>
-          </div>
+          </motion.div>
         </div>
-        <div className="w-full text-center flex justify-center">
+        <motion.div style={{x: scrollp*-200}} className="w-full text-center flex justify-center">
           <TextAppearUp delay={0.2}>THIS IS</TextAppearUp>
-        </div>
-        <div className="w-full flex">
+        </motion.div>
+        <motion.div style={{x: scrollp*200}} className="w-full flex">
           <div
             className="ml-auto group flex items-center justify-center relative"
             onMouseEnter={() => {
@@ -64,8 +80,8 @@ const Home = () => {
             <TextAppearUp delay={0.5}>RONISH</TextAppearUp>
             <PeekImage hovered={nameHovered}></PeekImage>
           </div>
-        </div>
-        <div className="w-full flex justify-start">
+        </motion.div>
+        <motion.div style={{x: scrollp*120}} className="w-full flex justify-start">
           <div
             onMouseEnter={() => setDeveloperHovered(true)}
             onMouseLeave={() => setDeveloperHovered(false)}
@@ -77,7 +93,7 @@ const Home = () => {
             ></HoverImage>
             <TextAppearUp delay={0.3}>A DEVELOPER.</TextAppearUp>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

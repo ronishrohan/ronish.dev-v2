@@ -15,7 +15,7 @@ const TextAppearWords = ({ children }: { children: ReactNode }) => {
                   whileInView={{ y: "0%" }}
                   transition={{
                     duration: 0.6,
-                    delay: index * children.toString().split(" ").length/10000,
+                    delay: index * children.toString().split(" ").length/5000,
                     ease: "circOut",
                   }}
                 >

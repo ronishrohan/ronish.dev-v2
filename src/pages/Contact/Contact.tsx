@@ -107,7 +107,7 @@ const Contact = () => {
 
 const ContactButton = ({ title }: { title: string }) => {
   return (
-    <button className="peer peer-hover:fill-black size-full overflow-hidden border group hover:fill-black relative fill-white flex-col transition-colors border-white/40 rounded-lg flex items-start justify-start p-4 hover:bg-white hover:text-black">
+    <button className=" size-full overflow-hidden border group hover:fill-black relative fill-white flex-col transition-colors border-white/40 rounded-lg flex items-start justify-start p-4 hover:bg-white hover:text-black">
       {title}
       <div className="text-black font-normal">I post about stuff here</div>
       <div className="absolute bottom-0 right-0 size-[2vw] m-4 rotate-45 group-hover:rotate-0 transition-transform ">
