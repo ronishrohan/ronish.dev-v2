@@ -85,7 +85,7 @@ const Services = () => {
             />
             <motion.div
               style={{ y: scrollInner, opacity: s1.scrollYProgress }}
-              className="text-[10vw] justify-center px-4 whitespace-nowrap leading-[10vw] text-white font-bold z-30 size-full absolute top-full flex flex-col items-start"
+              className="text-[10vw] justify-center px-4 whitespace-nowrap leading-[10vw] text-white font-bold z-30 size-full absolute top-3/4 flex flex-col items-start"
             >
               {serviceList.map((service, index) => {
                 return (

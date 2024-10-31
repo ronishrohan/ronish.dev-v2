@@ -39,7 +39,7 @@ const Work = () => {
     <section id="work" data-scroll-section className=" h-fit w-screen z-20 flex flex-col p-4 pt-10">
       <div className="h-[1px] bg-black w-full"></div>
       <TextSlider></TextSlider>
-      <div className="h-[60vh] w-full flex gap-10">
+      <div className="h-[80vh] w-full flex gap-10">
         <div
           onMouseEnter={() => setExpanded(true)}
           onMouseLeave={() => setExpanded(false)}

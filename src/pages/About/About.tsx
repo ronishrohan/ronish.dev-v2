@@ -7,7 +7,11 @@ import { expandedAtom } from "../../store/cursorStore";
 
 const About = () => {
   return (
-    <section id="about" data-scroll-section className="h-screen w-full z-20 p-4 flex flex-col">
+    <section
+      id="about"
+      data-scroll-section
+      className="h-screen w-full z-20 p-4 flex flex-col"
+    >
       <div className="h-[1px] bg-black w-full"></div>
       <div className="mt-10 items-center overflow-hidden flex gap-4 shrink-0">
         <div className=" text-[2.4vw] leading-[2.4vw]  font-medium ">
@@ -33,65 +37,70 @@ const About = () => {
           />
         </motion.div>
       </div>
-      <div className="h-full flex  gap-4 mt-10">
-        <div className="flex h-full w-1/2 gap-4">
-          <Info
-            info={
-              <>
-                <div>CMR Institute of Technology</div>
-                <div>Pursuing B.Tech in Computer Science</div>
-                <div className="text-white/50">2024-2027</div>
-              </>
-            }
-          >
-            Education
-          </Info>
+      <div className="h-full mt-4 w-full flex gap-4">
+        <div className="h-full w-full flex  gap-4 ">
+          <div className="flex h-full w-1/2 gap-4">
+            <Info
+              info={
+                <>
+                  <div>CMR Institute of Technology</div>
+                  <div>Pursuing B.Tech in Computer Science</div>
+                  <div className="text-white/50">2024-2027</div>
+                </>
+              }
+            >
+              Education
+            </Info>
 
-          <Info
-            info={
-              <>
-                <div>React - The Complete Guide 2024</div>
-                <div>Udemy</div>
-                <div className="text-white/50">Dec 24, 2023</div>
-                <div>React Native - The Practical Guide</div>
-                <div>Udemy</div>
-                <div className="text-white/50">June 25, 2024</div>
-              </>
-            }
-          >
-            Certificates
-          </Info>
-        </div>
-        <div className="flex flex-col h-full w-1/4 gap-4">
-          <div className="h-1/2 w-full p-4">
-            <div className="rounded-full size-full border-4 border-black/10"></div>
+            <Info
+              info={
+                <>
+                  <div>React - The Complete Guide 2024</div>
+                  <div>Udemy</div>
+                  <div className="text-white/50">Dec 24, 2023</div>
+                  <div>React Native - The Practical Guide</div>
+                  <div>Udemy</div>
+                  <div className="text-white/50">June 25, 2024</div>
+                </>
+              }
+            >
+              Certificates
+            </Info>
           </div>
-          <Info
-            onClick={() =>
-              window.open("https://github.com/ronishrohan", "_blank")
-            }
-            info={
-              <>
-                <div>Here's what I offer</div>
-              </>
-            }
-          >
-            Services
-          </Info>
+          <div className="flex flex-col h-full w-1/4 gap-4">
+            <div className="h-1/2 w-full p-4">
+              <div className="rounded-full size-full border-4 border-black/10"></div>
+            </div>
+            <Info
+              onClick={() =>
+                window.open("https://github.com/ronishrohan", "_blank")
+              }
+              info={
+                <>
+                  <div>Here's what I offer</div>
+                </>
+              }
+            >
+              Services
+            </Info>
+          </div>
+          <div className="flex items-start h-full w-1/4 gap-4">
+            <Info
+              onClick={() =>
+                window.open("https://github.com/ronishrohan", "_blank")
+              }
+              info={
+                <>
+                  <div>Take a look at my projects</div>
+                </>
+              }
+            >
+              Projects
+            </Info>
+          </div>
         </div>
-        <div className="flex items-start h-full w-1/4 gap-4">
-          <Info
-            onClick={() =>
-              window.open("https://github.com/ronishrohan", "_blank")
-            }
-            info={
-              <>
-                <div>Take a look at my projects</div>
-              </>
-            }
-          >
-            Projects
-          </Info>
+        <div className="h-full w-0 lg:w-1/3 shrink-0 overflow-hidden rounded-lg flex items-center justify-center relative">
+          <img src="/images/road.jpg" className="absolute size-full object-cover" alt="" />
         </div>
       </div>
     </section>
