@@ -62,6 +62,16 @@ const Home = () => {
       id="home"
       className="size-full hidden sm:flex h-[100vh] z-20 font-montreal  flex-col items-center justify-center p-4"
     >
+      <HoverImage
+              image={"/images/folded_hands_emoji.png"}
+              hovered={welcomeHovered}
+              pos={mousePos}
+            ></HoverImage>
+            <HoverImage
+              image={"/images/man_developer_emoji.png"}
+              hovered={developerHovered}
+              pos={mousePos}
+            ></HoverImage>
       <div className="flex flex-col w-full select-none h-fit text-[10vw] font-medium leading-[10vw]">
         <div className="w-full flex">
           <motion.div
@@ -70,11 +80,7 @@ const Home = () => {
             onMouseLeave={() => setWelcomeHovered(false)}
             className="mr-auto group"
           >
-            <HoverImage
-              image={"/images/folded_hands_emoji.png"}
-              hovered={welcomeHovered}
-              pos={mousePos}
-            ></HoverImage>
+            
             <TextAppearUp delay={0}>NAMASTE</TextAppearUp>
           </motion.div>
         </div>
@@ -108,11 +114,7 @@ const Home = () => {
             onMouseEnter={() => setDeveloperHovered(true)}
             onMouseLeave={() => setDeveloperHovered(false)}
           >
-            <HoverImage
-              image={"/images/man_developer_emoji.png"}
-              hovered={developerHovered}
-              pos={mousePos}
-            ></HoverImage>
+            
             <TextAppearUp delay={0.3}>A DEVELOPER.</TextAppearUp>
           </div>
         </motion.div>

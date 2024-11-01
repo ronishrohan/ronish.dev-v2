@@ -41,7 +41,7 @@ const Navbar = () => {
         <Divider />
         <Button title="Services"></Button>
         <Divider />
-        <Button title="Contact2"></Button>
+        <Button title="Contact"></Button>
       </div>
     </motion.header>
   );
